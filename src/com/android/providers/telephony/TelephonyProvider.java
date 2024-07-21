@@ -812,6 +812,7 @@ public class TelephonyProvider extends ContentProvider
 
         private void createSimInfoTable(SQLiteDatabase db, String tableName) {
             if (DBG) log("dbh.createSimInfoTable:+ " + tableName);
+            db.execSQL("DROP TABLE IF EXISTS " + tableName);
             db.execSQL(getStringForSimInfoTableCreation(tableName));
             if (DBG) log("dbh.createSimInfoTable:-");
         }
@@ -819,6 +820,7 @@ public class TelephonyProvider extends ContentProvider
         private void createCarriersTable(SQLiteDatabase db, String tableName) {
             // Set up the database schema
             if (DBG) log("dbh.createCarriersTable: " + tableName);
+            db.execSQL("DROP TABLE IF EXISTS " + tableName);
             db.execSQL(getStringForCarrierTableCreation(tableName));
             if (DBG) log("dbh.createCarriersTable:-");
         }
